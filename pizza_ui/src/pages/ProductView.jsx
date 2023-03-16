@@ -12,7 +12,7 @@ function ProductView() {
 
   useEffect(() => {
     const fetchPizza = async () => {
-      const result = await axios.get(`/api/pizzas/${id}`);
+      const result = await axios.get(`https://api-pizza-five.vercel.app/api/pizzas/${id}`);
       // console.log(result.data);
       setProduct(result.data);
     };
