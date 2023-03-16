@@ -26,15 +26,16 @@ mongoose
     console.log(err.message);
   });
 
+
+app.use("/", (req, res) => {
+  res.send("Hello")
+});
+
 // http://localhost:5000/
 // routes
 app.use("/api/seed", seedRouter);
 app.use("/api/users", userRoute);
 app.use("/api/pizzas", productRoute);
-
-app.get("/", (req, res) => {
-  res.send("Hello")
-});
 
 app.listen(process.env.PORT, () => {
   console.log(`Server Running On ${process.env.PORT}`);
