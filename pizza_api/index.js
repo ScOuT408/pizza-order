@@ -32,7 +32,7 @@ app.use("/api/seed", seedRouter);
 app.use("/api/users", userRoute);
 app.use("/api/pizzas", productRoute);
 
-app.get("/", () => {
+app.get("/", (req, res) => {
   res.send("Hello")
 });
 
