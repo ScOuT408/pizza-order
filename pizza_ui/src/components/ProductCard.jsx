@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { EyeIcon, PlusIcon } from "@heroicons/react/outline";
 import { useDispatch } from "react-redux";
 import { addPizza } from "../features/cartSlice";
+import { toast } from "react-hot-toast";
 
 function ProductCard({ pizza }) {
   const { _id, name, image, price } = pizza;
@@ -11,8 +12,13 @@ function ProductCard({ pizza }) {
   const dispatch = useDispatch();
 
   const addToCart = () => {
+    if (!user) {
+      return toast.error("Please login to add items to cart");
+    }
+
     dispatch(addPizza({ _id, name, image, price, quantity, userId: user._id }));
   };
+
 
   return (
     <div className="border border-primary w-full shadow-lg mb-5 rounded-lg p-3">
